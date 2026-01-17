@@ -295,6 +295,9 @@ def create_graphviz_graph(
             display_name = name
         elif n.tags.get("display_name"):
             display_name = n.tags["display_name"]
+            # Handle case where display_name is a list (use first element)
+            if isinstance(display_name, list):
+                display_name = display_name[0] if display_name else n.name
         else:
             display_name = n.name
 
@@ -323,6 +326,9 @@ def create_graphviz_graph(
         for dep in input_nodes:
             # Use display_name tag if present, otherwise use node name
             display_name = dep.tags.get("display_name", dep.name)
+            # Handle case where display_name is a list (use first element)
+            if isinstance(display_name, list):
+                display_name = display_name[0] if display_name else dep.name
             type_string = get_type_as_string(dep.type) if get_type_as_string(dep.type) else ""
             # HTML escape for security
             escaped_display_name = html.escape(display_name, quote=True)
