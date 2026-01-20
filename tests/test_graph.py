@@ -49,6 +49,8 @@ import tests.resources.parametrized_inputs
 import tests.resources.parametrized_nodes
 import tests.resources.test_default_args
 import tests.resources.typing_vs_not_typing
+import tests.resources.display_name_functions
+import tests.resources.display_name_list_functions
 
 
 def test_find_functions():
@@ -1317,7 +1319,6 @@ def test_update_dependencies():
 
 def test_create_graphviz_graph_with_display_name():
     """Tests that display_name tag is used for node labels in visualization."""
-    import tests.resources.display_name_functions
 
     config = {}
     fg = graph.FunctionGraph.from_modules(tests.resources.display_name_functions, config=config)
@@ -1344,8 +1345,6 @@ def test_create_graphviz_graph_with_display_name():
 
 def test_create_graphviz_graph_display_name_html_escaping():
     """Tests that display_name values with special characters are properly HTML escaped."""
-    import tests.resources.display_name_functions
-
     config = {}
     fg = graph.FunctionGraph.from_modules(tests.resources.display_name_functions, config=config)
     nodes, user_nodes = fg.get_upstream_nodes(["node_with_special_chars"])
@@ -1375,8 +1374,6 @@ def test_create_graphviz_graph_display_name_html_escaping():
 
 def test_create_graphviz_graph_without_display_name_backward_compatible():
     """Tests that nodes without display_name tag still work as before."""
-    import tests.resources.dummy_functions
-
     config = {}
     fg = graph.FunctionGraph.from_modules(tests.resources.dummy_functions, config=config)
     nodes, user_nodes = fg.get_upstream_nodes(["A", "B"])
@@ -1399,8 +1396,6 @@ def test_create_graphviz_graph_without_display_name_backward_compatible():
 
 def test_get_input_label_with_display_name():
     """Tests that _get_input_label uses display_name tag for input nodes."""
-    import tests.resources.display_name_functions
-
     config = {}
     fg = graph.FunctionGraph.from_modules(tests.resources.display_name_functions, config=config)
     # Get nodes that have inputs (to test _get_input_label)
@@ -1425,8 +1420,6 @@ def test_get_input_label_with_display_name():
 
 def test_get_node_label_explicit_name_overrides_display_name():
     """Tests that explicit name parameter overrides display_name tag in _get_node_label."""
-    import tests.resources.display_name_functions
-
     config = {}
     fg = graph.FunctionGraph.from_modules(tests.resources.display_name_functions, config=config)
 
@@ -1465,8 +1458,6 @@ def test_get_node_label_explicit_name_overrides_display_name():
 
 def test_display_name_list_value_uses_first_element():
     """Tests that when display_name is a list, the first element is used."""
-    import tests.resources.display_name_list_functions
-
     config = {}
     fg = graph.FunctionGraph.from_modules(
         tests.resources.display_name_list_functions, config=config
