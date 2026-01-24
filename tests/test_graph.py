@@ -36,6 +36,8 @@ import tests.resources.bad_functions
 import tests.resources.compatible_input_types
 import tests.resources.config_modifier
 import tests.resources.cyclic_functions
+import tests.resources.display_name_functions
+import tests.resources.display_name_list_functions
 import tests.resources.dummy_functions
 import tests.resources.dummy_functions_module_override
 import tests.resources.extract_column_nodes
@@ -49,8 +51,6 @@ import tests.resources.parametrized_inputs
 import tests.resources.parametrized_nodes
 import tests.resources.test_default_args
 import tests.resources.typing_vs_not_typing
-import tests.resources.display_name_functions
-import tests.resources.display_name_list_functions
 
 
 def test_find_functions():
